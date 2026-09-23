@@ -8,6 +8,7 @@ queue_rules:
       - "#approved-reviews-by>=1"
     merge_conditions:
       - check-success=r1-ci
+      - "#approved-reviews-by>=1"
 
 pull_request_rules:
   - name: queue it
