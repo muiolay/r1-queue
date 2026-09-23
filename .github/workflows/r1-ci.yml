@@ -1,0 +1,14 @@
+name: r1-ci
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - 'mergify/merge-queue/**'
+jobs:
+  r1-ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: sleep 45
+      - run: bash ci/check.sh
