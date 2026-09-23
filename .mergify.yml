@@ -1,0 +1,20 @@
+queue_rules:
+  - name: default
+    batch_size: 1
+    queue_conditions:
+      - base=main
+      - -draft
+      - -conflict
+      - "#approved-reviews-by>=1"
+    merge_conditions:
+      - check-success=r1-ci
+
+pull_request_rules:
+  - name: queue it
+    conditions:
+      - base=main
+      - -draft
+      - "#approved-reviews-by>=1"
+    actions:
+      queue:
+        name: default
